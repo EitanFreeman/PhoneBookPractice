@@ -160,9 +160,9 @@ void FindByName(Contact* phonebook[LETTER_COUNT]){
     char fullName[MAX_FULLNAME];
     GetFullName(firstName, lastName, fullName);
 
-    Contact *Contact = FindByNameH(phonebook, fullName);
-    if(Contact){
-        printf("The following contact was found: %s %s %s\n", Contact->firstName, Contact->lastName, Contact->PhoneNum);
+    Contact *ContactFound = FindByNameH(phonebook, fullName);
+    if(ContactFound){
+        printf("The following contact was found: %s %s %s\n", ContactFound->firstName, ContactFound->lastName, ContactFound->PhoneNum);
     } else{
         printf("No contact with a name %s was found in the phone book\n", fullName);
     }
@@ -173,9 +173,9 @@ void FindByNumber(Contact* phonebook[LETTER_COUNT]){
     char number[MAX_STRING];
     scanf("%s", number);
 
-    Contact *Contact = FindByNumberH(phonebook, number);
-    if(Contact){
-        printf("The following contact was found: %s %s %s\n", Contact->firstName, Contact->lastName, Contact->PhoneNum);
+    Contact *ContactFound = FindByNumberH(phonebook, number);
+    if(ContactFound){
+        printf("The following contact was found: %s %s %s\n", ContactFound->firstName, ContactFound->lastName, ContactFound->PhoneNum);
     } else{
         printf("No contact with a phone number %s was found in the phone book\n", number);
     }
@@ -199,10 +199,10 @@ void UpdateNumber(Contact* phonebook[LETTER_COUNT]){
         return;
     }
 
-    Contact *Contact = FindByNameH(phonebook, fullName);
-    if(Contact){
+    Contact *ContactFound = FindByNameH(phonebook, fullName);
+    if(ContactFound){
         printf("The contact has been updated successfully!\n");
-        strcpy(Contact->PhoneNum, number);
+        strcpy(ContactFound->PhoneNum, number);
     } else{
         printf("No contact with a name %s was found in the phone book\n", fullName);
         return;
